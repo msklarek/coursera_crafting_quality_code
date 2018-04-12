@@ -47,11 +47,11 @@ class Rat:
     def get_location(self):
         return (self.row, self.col)
 
-    def eat_sprouts(self,):
+    def eat_sprout(self,):
         self.num_sprouts_eaten += 1
 
     def __str__(self):
-        result = " {0} at {1} ate {2} sprouts.".format( self.symbol, (self.row,self.col), self.num_sprouts_eaten)
+        result = "{0} at {1} ate {2} sprouts.".format( self.symbol, (self.row,self.col), self.num_sprouts_eaten)
         return result
 
 
@@ -97,7 +97,7 @@ class Maze:
         else:
             Rat.set_location(new_location[0], new_location[1])
             if elem == SPROUT:
-                Rat.eat_sprouts()
+                Rat.eat_sprout()
                 self.set_character(new_location[0], new_location[1], HALL)
                 self.num_sprouts_left -=1
             return True
@@ -110,7 +110,7 @@ class Maze:
             for j in range(cols):
                 char = self.get_character(i, j)
                 result += char
-            result += "\n"
+
         result += str(self.rat_1)
         result += "\n"
         result += str(self.rat_2)
